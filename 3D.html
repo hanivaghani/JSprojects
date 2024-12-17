@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Geometric Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #444;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .shape {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .shape h2 {
+            margin-bottom: 10px;
+            color: #007acc;
+        }
+        .shape input {
+            width: 80%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .shape button {
+            background-color: #007acc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .shape button:hover {
+            background-color: #005f99;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>3D Geometric Shape Calculator</h1>
+    <div class="container">
+        <!-- Cube -->
+        <div class="shape">
+            <h2>Cube</h2>
+            <input type="number" id="cube-side" placeholder="Enter side length">
+            <button onclick="calculateCube()">Calculate</button>
+            <div class="result" id="cube-result"></div>
+        </div>
+
+        <!-- Sphere -->
+        <div class="shape">
+            <h2>Sphere</h2>
+            <input type="number" id="sphere-radius" placeholder="Enter radius">
+            <button onclick="calculateSphere()">Calculate</button>
+            <div class="result" id="sphere-result"></div>
+        </div>
+
+        <!-- Cylinder -->
+        <div class="shape">
+            <h2>Cylinder</h2>
+            <input type="number" id="cylinder-radius" placeholder="Enter radius">
+            <input type="number" id="cylinder-height" placeholder="Enter height">
+            <button onclick="calculateCylinder()">Calculate</button>
+            <div class="result" id="cylinder-result"></div>
+        </div>
+
+        <!-- Cone -->
+        <div class="shape">
+            <h2>Cone</h2>
+            <input type="number" id="cone-radius" placeholder="Enter radius">
+            <input type="number" id="cone-height" placeholder="Enter height">
+            <button onclick="calculateCone()">Calculate</button>
+            <div class="result" id="cone-result"></div>
+        </div>
+
+        <!-- Rectangular Prism -->
+        <div class="shape">
+            <h2>Rectangular Prism</h2>
+            <input type="number" id="prism-length" placeholder="Enter length">
+            <input type="number" id="prism-width" placeholder="Enter width">
+            <input type="number" id="prism-height" placeholder="Enter height">
+            <button onclick="calculatePrism()">Calculate</button>
+            <div class="result" id="prism-result"></div>
+        </div>
+
+        <!-- Triangular Prism -->
+        <div class="shape">
+            <h2>Triangular Prism</h2>
+            <input type="number" id="tri-base" placeholder="Enter base of triangle">
+            <input type="number" id="tri-height" placeholder="Enter height of triangle">
+            <input type="number" id="tri-length" placeholder="Enter prism length">
+            <button onclick="calculateTriPrism()">Calculate</button>
+            <div class="result" id="tri-prism-result"></div>
+        </div>
+
+        <!-- Pyramid -->
+        <div class="shape">
+            <h2>Pyramid</h2>
+            <input type="number" id="pyramid-base" placeholder="Enter base area">
+            <input type="number" id="pyramid-height" placeholder="Enter height">
+            <button onclick="calculatePyramid()">Calculate</button>
+            <div class="result" id="pyramid-result"></div>
+        </div>
+
+        <!-- Hemisphere -->
+        <div class="shape">
+            <h2>Hemisphere</h2>
+            <input type="number" id="hemi-radius" placeholder="Enter radius">
+            <button onclick="calculateHemisphere()">Calculate</button>
+            <div class="result" id="hemi-result"></div>
+        </div>
+
+        <!-- Torus -->
+        <div class="shape">
+            <h2>Torus</h2>
+            <input type="number" id="torus-radius" placeholder="Enter major radius (R)">
+            <input type="number" id="torus-tube" placeholder="Enter tube radius (r)">
+            <button onclick="calculateTorus()">Calculate</button>
+            <div class="result" id="torus-result"></div>
+        </div>
+    </div>
+
+    <script>
+        function calculateCube() {
+            const side = document.getElementById('cube-side').value;
+            const volume = Math.pow(side, 3);
+            document.getElementById('cube-result').innerText = `Volume: ${volume}`;
+        }
+
+        function calculateSphere() {
+            const radius = document.getElementById('sphere-radius').value;
+            const volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+            document.getElementById('sphere-result').innerText = `Volume: ${volume.toFixed(2)}`;
+        }
+
+        function calculateCylinder() {
+            const radius = document.getElementById('cylinder-radius').value;
+            const height = document.getElementById('cylinder-height').value;
+            const volume = Math.PI * Math.pow(radius, 2) * height;
+            document.getElementById('cylinder-result').innerText = `Volume: ${volume.toFixed(2)}`;
+        }
+
+        function calculateCone() {
+            const radius = document.getElementById('cone-radius').value;
+            const height = document.getElementById('cone-height').value;
+            const volume = (1 / 3) * Math.PI * Math.pow(radius, 2) * height;
+            document.getElementById('cone-result').innerText = `Volume: ${volume.toFixed(2)}`;
+        }
+
+        function calculatePrism() {
+            const length = document.getElementById('prism-length').value;
+            const width = document.getElementById('prism-width').value;
+            const height = document.getElementById('prism-height').value;
+            const volume = length * width * height;
+            document.getElementById('prism-result').innerText = `Volume: ${volume}`;
+        }
+
+        function calculateTriPrism() {
+            const base = document.getElementById('tri-base').value;
+            const triHeight = document.getElementById('tri-height').value;
+            const length = document.getElementById('tri-length').value;
+            const volume = 0.5 * base * triHeight * length;
+            document.getElementById('tri-prism-result').innerText = `Volume: ${volume}`;
+        }
+
+        function calculatePyramid() {
+            const baseArea = document.getElementById('pyramid-base').value;
+            const height = document.getElementById('pyramid-height').value;
+            const volume = (1 / 3) * baseArea * height;
+            document.getElementById('pyramid-result').innerText = `Volume: ${volume}`;
+        }
+
+        function calculateHemisphere() {
+            const radius = document.getElementById('hemi-radius').value;
+            const volume = (2 / 3) * Math.PI * Math.pow(radius, 3);
+            document.getElementById('hemi-result').innerText = `Volume: ${volume.toFixed(2)}`;
+        }
+
+        function calculateTorus() {
+            const R = document.getElementById('torus-radius').value;
+            const r = document.getElementById('torus-tube').value;
+            const volume = (2 * Math.PI * r * r) * (2 * Math.PI * R);
+            document.getElementById('torus-result').innerText = `Volume: ${volume.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

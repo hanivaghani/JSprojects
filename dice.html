@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Dice Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #81c7ff, #4b77a9);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(5px);
+            width: 400px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .dice {
+            font-size: 80px;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+
+        .dice:hover {
+            transform: rotate(10deg);
+        }
+
+        button {
+            padding: 15px 30px;
+            border: none;
+            background-color: #ff4081;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ff79a1;
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Multiplayer Dice Game</h1>
+        <div class="dice" id="dice1">🎲</div>
+        <div class="dice" id="dice2">🎲</div>
+        <button onclick="rollDice()">Roll the Dice!</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function rollDie() {
+            return Math.floor(Math.random() * 6) + 1; // Generates a number between 1 and 6
+        }
+
+        function rollDice() {
+            const die1 = rollDie();
+            const die2 = rollDie();
+
+            document.getElementById('dice1').innerText = `🎲 ${die1}`;
+            document.getElementById('dice2').innerText = `🎲 ${die2}`;
+
+            // Determine the winner
+            const resultElement = document.getElementById('result');
+            if (die1 > die2) {
+                resultElement.innerText = 'Player 1 wins! 🎉';
+            } else if (die1 < die2) {
+                resultElement.innerText = 'Player 2 wins! 🎉';
+            } else {
+                resultElement.innerText = 'It\'s a draw! 🤝';
+            }
+        }
+    </script>
+</body>
+</html> 

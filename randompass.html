@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f4f4f4, #d9d9d9);
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+            transition: transform 0.2s;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #f9f9f9;
+            color: #333;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 12px;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+            background: linear-gradient(90deg, #28a745, #218838);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #218838, #28a745);
+            transform: translateY(-2px);
+        }
+
+        button.copy {
+            background: #007bff;
+        }
+
+        button.copy:hover {
+            background: #0056b3;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        #message {
+            margin-top: 10px;
+            color: #333;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Password Generator</h2>
+    <label><input type="checkbox" id="uppercase" checked> Uppercase Letters</label>
+    <label><input type="checkbox" id="lowercase" checked> Lowercase Letters</label>
+    <label><input type="checkbox" id="digits" checked> Digits</label>
+    <label><input type="checkbox" id="special" checked> Special Characters</label>
+    <br>
+    <button id="generate">Generate Password</button>
+    <input type="text" id="password" readonly>
+    <button class="copy" onclick="copyToClipboard()">Copy to Clipboard</button>
+    <p id="message"></p>
+</div>
+
+<script>
+    function generatePassword() {
+        const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+        const digits = '0123456789';
+        const special = '!@#$%^&*()_+[]{}|;:,.<>?';
+
+        let characters = '';
+        if (document.getElementById('uppercase').checked) characters += uppercase;
+        if (document.getElementById('lowercase').checked) characters += lowercase;
+        if (document.getElementById('digits').checked) characters += digits;
+        if (document.getElementById('special').checked) characters += special;
+
+        if (characters.length === 0) {
+            document.getElementById('message').innerText = 'Please select at least one character type.';
+            return;
+        }
+
+        let password = '';
+        for (let i = 0; i < 12; i++) { // You can change 12 to your desired password length
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            password += characters[randomIndex];
+        }
+
+        document.getElementById('password').value = password;
+        document.getElementById('message').innerText = 'Password generated successfully!';
+    }
+
+    function copyToClipboard() {
+        const passwordField = document.getElementById('password');
+        passwordField.select();
+        document.execCommand('copy');
+        document.getElementById('message').innerText = 'Password copied to clipboard!';
+    }
+
+    document.getElementById('generate').addEventListener('click', generatePassword);
+</script>
+
+</body>
+</html>

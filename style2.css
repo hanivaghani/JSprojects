@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.5;
+    background-color: black;
+    color: #333;
+    padding: 7rem 2rem 0 2rem;
+    /* overflow: hidden; */
+}
+
+.container {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2.5rem;
+    background-color: #d0c7d1e4;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 2rem;
+    font-size: 5rem;
+}
+
+/* Status Styles */
+.status {
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    /* background-color: #e9ecef; */
+    border-radius: 8px;
+    color: #333;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+/* Upload Section */
+.upload-section {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.upload-button {
+    display: block;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    border: 2px dashed #007bff;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background-color: #f8f9fa;
+    color: #007bff;
+    font-size: 1.1rem;
+}
+
+.upload-button:hover {
+    background-color: #e2e6ea;
+}
+
+.info {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Preview Section */
+.preview-section {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.image-container {
+    max-width: 100%;
+    margin: 1rem auto;
+}
+
+#preview-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Results Section */
+.results-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.predictions {
+    margin-top: 1rem;
+}
+
+.prediction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    margin: 0.6rem 0;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    color: #333;
+}
+
+.confidence-bar {
+    height: 16px;
+    background-color: #007bff;
+    border-radius: 8px;
+    transition: width 0
+}
